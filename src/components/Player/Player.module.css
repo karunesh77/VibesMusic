@@ -1,0 +1,107 @@
+.bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 82px;
+  background: rgba(8, 8, 16, 0.98);
+  backdrop-filter: blur(30px);
+  border-top: 1px solid var(--bd);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 16px;
+  z-index: 100;
+}
+
+/* LEFT */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 220px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.cover {
+  width: 48px; height: 48px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  background: var(--s2);
+  overflow: hidden;
+}
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+
+.info { flex: 1; min-width: 0; }
+.name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.artist { font-size: 11px; color: var(--mt); }
+
+.heart {
+  background: none; border: none;
+  font-size: 17px; color: var(--mt);
+  transition: all 0.2s; margin-left: 6px; flex-shrink: 0;
+}
+.heart:hover { transform: scale(1.2); }
+.heart.liked { color: var(--p); }
+
+/* CENTER */
+.center {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  max-width: 480px; min-width: 0;
+}
+
+.btns { display: flex; align-items: center; gap: 14px; }
+
+.cb {
+  background: none; border: none;
+  color: var(--mt); font-size: 18px;
+  transition: color 0.2s; line-height: 1; padding: 0;
+}
+.cb:hover { color: var(--tx); }
+.cb.on { color: var(--y); }
+
+.playBtn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--y), #FFB800);
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: #000;
+  transition: all 0.2s;
+  box-shadow: 0 0 18px rgba(255, 229, 0, 0.2);
+}
+.playBtn:hover { transform: scale(1.08); box-shadow: 0 0 30px rgba(255, 229, 0, 0.4); }
+
+.prog { width: 100%; display: flex; align-items: center; gap: 8px; }
+
+.time { font-size: 10px; color: var(--mt); flex-shrink: 0; width: 28px; }
+.time.right { text-align: right; }
+
+.track {
+  flex: 1; height: 4px;
+  background: var(--s3); border-radius: 10px; cursor: pointer;
+}
+.fill {
+  height: 100%; border-radius: 10px;
+  background: linear-gradient(90deg, var(--p), var(--v));
+  transition: width 0.1s;
+}
+
+/* RIGHT */
+.right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+.volIcon { font-size: 15px; color: var(--mt); }
+
+.volSlider {
+  width: 72px; height: 4px;
+  background: var(--s3); border-radius: 10px;
+  appearance: none; outline: none; cursor: pointer;
+}
+.volSlider::-webkit-slider-thumb {
+  appearance: none; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--tx);
+}
+
+@media (max-width: 860px) { .right { display: none; } }

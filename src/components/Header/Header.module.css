@@ -1,0 +1,135 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  position: sticky;
+  top: 0;
+  background: rgba(8, 8, 16, 0.92);
+  backdrop-filter: blur(20px);
+  z-index: 40;
+  border-bottom: 1px solid var(--bd);
+  gap: 16px;
+}
+
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--s2);
+  border: 1px solid var(--bd);
+  border-radius: 50px;
+  padding: 10px 20px;
+  transition: border-color 0.2s;
+  flex: 1;
+  max-width: 420px;
+}
+.searchWrap:focus-within { border-color: rgba(107, 33, 255, 0.5); }
+
+.searchIcon { font-size: 16px; color: var(--mt); }
+
+.searchInput {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--tx);
+  font-size: 14px;
+  flex: 1;
+}
+.searchInput::placeholder { color: var(--mt); }
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btnAI {
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--v), var(--b));
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.btnAI:hover { opacity: 0.85; }
+
+.authBtns { display: flex; gap: 8px; }
+
+.btnLogin {
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: transparent;
+  color: var(--tx);
+  border: 1px solid var(--bd);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btnLogin:hover { border-color: rgba(255,255,255,0.2); }
+
+.btnSignup {
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--p), var(--v));
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.btnSignup:hover { opacity: 0.85; }
+
+.userMenu { position: relative; }
+.userMenu:hover .dropdown { display: flex; }
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--v), var(--p));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  border: 2px solid rgba(107, 33, 255, 0.4);
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 46px;
+  background: var(--s2);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 140px;
+  gap: 10px;
+  z-index: 100;
+}
+
+.dropName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx);
+  padding: 0 4px;
+}
+
+.dropLogout {
+  padding: 8px 12px;
+  background: rgba(255, 45, 120, 0.1);
+  border: 1px solid rgba(255, 45, 120, 0.2);
+  border-radius: 8px;
+  color: var(--p);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.dropLogout:hover { background: rgba(255, 45, 120, 0.2); }

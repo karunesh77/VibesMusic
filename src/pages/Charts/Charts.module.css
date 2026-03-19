@@ -1,0 +1,24 @@
+.pageHdr { padding: 36px 28px 0; }
+.pageTitle { font-family: var(--font-display); font-size: 42px; letter-spacing: 2px; }
+.pageSub { font-size: 14px; color: var(--mt); margin-top: 4px; }
+.section { padding: 24px 28px; }
+.item { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--s1); border-radius: 12px; border: 1px solid var(--bd); cursor: pointer; transition: all 0.2s; margin-bottom: 8px; }
+.item:hover { background: var(--s2); transform: translateX(3px); }
+.item.active { border-color: var(--y); }
+.rank { font-family: var(--font-display); font-size: 26px; width: 36px; text-align: center; flex-shrink: 0; }
+.r1 { color: var(--y); }
+.r2 { color: #C0C0C0; }
+.r3 { color: #CD7F32; }
+.rn { color: var(--mt); }
+.cover { width: 48px; height: 48px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; overflow: hidden; }
+.cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 9px; }
+.info { flex: 1; min-width: 0; }
+.name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.artist { font-size: 11px; color: var(--mt); margin-top: 2px; }
+.barWrap { width: 100px; flex-shrink: 0; }
+.barBg { height: 3px; background: var(--s3); border-radius: 10px; overflow: hidden; }
+.barFill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--p), var(--v)); }
+.plays { font-size: 10px; color: var(--mt); margin-top: 4px; }
+.loading { display: flex; align-items: center; justify-content: center; padding: 60px; }
+.spinner { width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--s3); border-top-color: var(--p); animation: sp 0.8s linear infinite; }
+@keyframes sp { to { transform: rotate(360deg) } }

@@ -1,0 +1,8 @@
+.pageHdr { padding: 36px 28px 0; }
+.pageTitle { font-family: var(--font-display); font-size: 42px; letter-spacing: 2px; }
+.pageSub { font-size: 14px; color: var(--mt); margin-top: 4px; }
+.section { padding: 24px 28px; }
+.list { display: flex; flex-direction: column; gap: 2px; }
+.empty { text-align: center; padding: 60px; color: var(--mt); }
+.emptyIcon { font-size: 52px; margin-bottom: 14px; }
+.emptyTxt { font-size: 14px; }
