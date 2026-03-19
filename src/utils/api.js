@@ -1,24 +1,30 @@
-import { JAMENDO_ID } from '../data/constants';
-import { mapTrack } from './helpers';
+import { mapItunesTrack } from './helpers';
 
-// Uses Vite proxy — no CORS issues!
-const JAMENDO_BASE = '/jamendo/v3.0';
+const BASE = 'https://itunes.apple.com';
+
+const GENRE_TERMS = {
+  'All': 'top hits',
+  'Electronic': 'electronic music',
+  'Rock': 'rock',
+  'Pop': 'pop',
+  'Hip-Hop': 'hip hop',
+  'Jazz': 'jazz',
+  'Classical': 'classical',
+  'Ambient': 'ambient',
+};
 
 export async function fetchTracks(tag = '', search = '') {
-  let url = `${JAMENDO_BASE}/tracks/?client_id=${JAMENDO_ID}&format=json&limit=24&include=musicinfo&audioformat=mp32&imagesize=200`;
-  if (search) url += `&namesearch=${encodeURIComponent(search)}`;
-  else if (tag && tag !== 'All') url += `&tags=${encodeURIComponent(tag.toLowerCase())}`;
-  else url += `&order=popularity_total`;
-
+  const term = search || GENRE_TERMS[tag] || 'top hits';
+  const url = `${BASE}/search?term=${encodeURIComponent(term)}&media=music&entity=song&limit=24`;
   const res = await fetch(url);
   const data = await res.json();
   if (!data.results?.length) throw new Error('No tracks found.');
-  return data.results.map(mapTrack);
+  return data.results.filter(t => t.previewUrl).map(mapItunesTrack);
 }
 
 export async function searchTracks(query) {
-  const url = `${JAMENDO_BASE}/tracks/?client_id=${JAMENDO_ID}&format=json&limit=16&include=musicinfo&audioformat=mp32&imagesize=200&namesearch=${encodeURIComponent(query)}`;
+  const url = `${BASE}/search?term=${encodeURIComponent(query)}&media=music&entity=song&limit=16`;
   const res = await fetch(url);
   const data = await res.json();
-  return (data.results || []).map(mapTrack);
+  return (data.results || []).filter(t => t.previewUrl).map(mapItunesTrack);
 }

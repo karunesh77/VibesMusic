@@ -1,5 +1,5 @@
-export const JAMENDO_ID = 'b6747d04';
-export const JAMENDO_BASE = 'https://api.jamendo.com/v3.0';
+export const JAMENDO_ID = 'b6747d04'; // keep for reference
+export const ITUNES_BASE = 'https://itunes.apple.com';
 export const ANTHROPIC_MODEL = 'claude-sonnet-4-20250514';
 
 export const EMOJIS = [

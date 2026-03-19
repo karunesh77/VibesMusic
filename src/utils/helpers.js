@@ -11,18 +11,23 @@ export function fmtNum(n) {
   return n;
 }
 
-export function mapTrack(t, i) {
+export function mapItunesTrack(t, i) {
   return {
-    id: t.id,
-    name: t.name,
-    artist: t.artist_name,
-    cover: t.image || null,
+    id: t.trackId,
+    name: t.trackName,
+    artist: t.artistName,
+    cover: t.artworkUrl100?.replace('100x100', '300x300') || null,
     emoji: EMOJIS[i % EMOJIS.length],
-    audio: t.audio || null,  // direct MP3 URL, no proxy needed
-    dur: fmtTime(t.duration),
-    secs: t.duration,
+    audio: t.previewUrl,  // direct 30sec MP3 — no CORS!
+    dur: fmtTime(30),
+    secs: 30,
     likes: Math.floor(Math.random() * 50000) + 1000,
-    genre: t.musicinfo?.tags?.genres?.[0] || 'Music',
+    genre: t.primaryGenreName || 'Music',
     color: COLORS[i % COLORS.length],
   };
+}
+
+// keep old one too just in case
+export function mapTrack(t, i) {
+  return mapItunesTrack(t, i);
 }
