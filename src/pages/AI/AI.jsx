@@ -15,9 +15,15 @@ export default function AI({ tracks, currentId, isPlaying, playSong, isLiked, to
     setLoading(true); setResult('');
     try {
       const trackList = tracks.slice(0, 8).map(t => `"${t.name}" by ${t.artist}`).join(', ');
+      // NOTE: Direct browser calls to Anthropic API will fail due to CORS. 
+      // This should be handled via a backend proxy for security and consistency.
       const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Anthropic-Version': '2023-06-01',
+          'x-api-key': 'MISSING_API_KEY' // TODO: Move to backend
+        },
         body: JSON.stringify({
           model: ANTHROPIC_MODEL,
           max_tokens: 1000,
@@ -27,9 +33,12 @@ export default function AI({ tracks, currentId, isPlaying, playSong, isLiked, to
           }],
         }),
       });
+      if (!res.ok) throw new Error('API request failed');
       const d = await res.json();
       setResult(d.content?.find(c => c.type === 'text')?.text || 'Try again!');
-    } catch { setResult('AI unavailable. Please try again.'); }
+    } catch { 
+      setResult('AI setup required. For security, AI features need a backend proxy on Vercel.'); 
+    }
     setLoading(false);
   };
 
